@@ -15,11 +15,7 @@ const usersRouter=require('./router/usersRouter');
 dotenv.config();
 
 //Database Connection
-mongoose.connect(process.env.MONGO_CONNECTION_STRING, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-}).then(() => {
+mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}).then(() => {
     console.log('DB Connected');
 }).catch((err) => {
     console.log(err.message);
@@ -29,7 +25,7 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING, {
 app.use(express.json());
 
 //set static folder
-app.use(express.static(path.join(__dirname, 'public'))); 
+
 
 //parse cookies
 app.use(cookieParser(process.env.COOKIE_SECRET));
